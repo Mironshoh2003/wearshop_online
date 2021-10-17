@@ -16,7 +16,12 @@ class FoodGenericCreateView(generics.CreateAPIView):
     permission_classes = [permissions.IsAdminUser]
 
 
-class CategoryViewset(generics.ListAPIView):
+class CategoryGeneric(generics.ListAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+
+class CategoryGenericCreateView(generics.CreateAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     permission_classes = [permissions.IsAdminUser]
