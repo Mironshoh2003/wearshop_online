@@ -1,1 +1,1 @@
-web: python manage.py runserver 0.0.0.0:$PORT
+web: gunicorn wear_shop.wsgi:apllication --log-file -
