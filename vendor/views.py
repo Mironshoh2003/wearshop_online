@@ -10,10 +10,15 @@ class FoodGeneric(generics.ListAPIView):
     serializer_class = FoodSerializer
 
 
-class FoodGenericCreateView(generics.CreateAPIView):
-    queryset = Food.objects.all()
+class FoodGenericCategoryView(generics.ListAPIView):
     serializer_class = FoodSerializer
-    permission_classes = [permissions.IsAdminUser]
+
+    def get_queryset(self,pk):
+        """
+        This view should return a list of all the purchases
+        for the currently authenticated user.
+        """
+        return Food.objects.filter(category__id=pk)
 
 
 class CategoryGeneric(generics.ListAPIView):
